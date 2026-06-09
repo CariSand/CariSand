@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carina Sandholm — Product Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #FAFAF8;
+    --surface: #F2F0EA;
+    --text: #1C1B18;
+    --muted: #6B6960;
+    --accent: #2D5C4A;
+    --accent-light: #E1F0EA;
+    --border: rgba(28,27,24,0.12);
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+
+  .nav-name {
+    font-family: var(--serif);
+    font-size: 17px;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  .nav-cta {
+    font-size: 13px !important;
+    font-weight: 500;
+    color: var(--accent) !important;
+    border: 1px solid var(--accent);
+    padding: 6px 14px;
+    border-radius: 20px;
+    transition: background 0.15s, color 0.15s !important;
+  }
+
+  .nav-cta:hover {
+    background: var(--accent) !important;
+    color: #fff !important;
+  }
+
+  /* SECTIONS */
+  section { padding: 5rem 2rem; max-width: 760px; margin: 0 auto; }
+
+  /* HERO */
+  #about {
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+  }
+
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.6rem, 6vw, 4rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-bio {
+    font-size: 17px;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 640px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 2.5rem;
+  }
+
+  .badge {
+    font-size: 12px;
+    font-weight: 500;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 5px 12px;
+    border-radius: 20px;
+    color: var(--muted);
+  }
+
+  .hero-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 22px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    border: 1px solid var(--accent);
+  }
+
+  .btn-primary:hover { background: #1e3f33; border-color: #1e3f33; }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+
+  .btn-ghost:hover { border-color: var(--text); }
+
+  /* DIVIDER */
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  /* SECTION HEADINGS */
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: 2rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+  }
+
+  /* EXPERIENCE */
+  .job {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 0 2rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .job:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .job-meta {
+    padding-top: 2px;
+  }
+
+  .job-period {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    line-height: 1.5;
+  }
+
+  .job-company {
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 500;
+    margin-top: 4px;
+  }
+
+  .job-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .job-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  .job-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+  }
+
+  .tag {
+    font-size: 11px;
+    background: var(--surface);
+    color: var(--muted);
+    padding: 3px 9px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  /* COMPETENCIES */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .skill-group {
+    background: var(--bg);
+    padding: 1.5rem;
+  }
+
+  .skill-group-title {
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .skill-list {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  /* QUOTES */
+  .quotes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .quote-card {
+    background: var(--surface);
+    border-radius: 8px;
+    padding: 1.5rem;
+  }
+
+  .quote-text {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 1rem;
+  }
+
+  .quote-attr {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted);
+  }
+
+  .quote-attr span {
+    color: var(--text);
+    display: block;
+  }
+
+  /* CONTACT */
+  #contact { text-align: center; }
+
+  #contact h2 { margin-bottom: 0.75rem; }
+
+  .contact-sub {
+    color: var(--muted);
+    margin-bottom: 2rem;
+    font-size: 16px;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 18px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    transition: all 0.15s;
+  }
+
+  .contact-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent-light);
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 1.5rem 2rem;
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  /* SVG icons (inline) */
+  .ico { width: 16px; height: 16px; vertical-align: -3px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* RESPONSIVE */
+  @media (max-width: 620px) {
+    nav { padding: 0 1rem; }
+    .nav-links { gap: 1rem; }
+    .nav-links li:not(:last-child):not(:nth-last-child(2)) { display: none; }
+    section { padding: 3rem 1.25rem; }
+    .job { grid-template-columns: 1fr; gap: 0.25rem; }
+    .job-meta { display: flex; gap: 8px; align-items: baseline; margin-bottom: 6px; }
+    .quotes-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 2.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#about" class="nav-name">Carina Sandholm</a>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#recommendations">Recommendations</a></li>
+    <li><a href="#contact" class="nav-cta">Get in touch</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="about">
+  <p class="eyebrow">Product Manager · Copenhagen</p>
+  <h1>Bridging technology,<br>business <em>and customers</em></h1>
+  <p class="hero-bio">
+    Curious product professional with a background in B2B SaaS, specialising in translating user insights and business needs into actionable solutions. From enterprise pilots with Nestlé and the NHS to shipping partner integrations at Dixa — I work at the intersection of discovery, delivery, and stakeholder trust.
+  </p>
+  <div class="hero-badges">
+    <span class="badge">Discovery &amp; prioritisation</span>
+    <span class="badge">Partner integrations</span>
+    <span class="badge">Stakeholder alignment</span>
+    <span class="badge">User research</span>
+    <span class="badge">Process automation</span>
+    <span class="badge">Cross-functional delivery</span>
+  </div>
+  <div class="hero-links">
+    <a href="https://www.linkedin.com/in/carinasandholm" class="btn btn-primary" target="_blank" rel="noopener">
+      <svg class="ico" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+    <a href="mailto:carina@example.com" class="btn btn-ghost">
+      <svg class="ico" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+      Send an email
+    </a>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label">Experience</p>
+
+  <div class="job">
+    <div class="job-meta">
+      <div class="job-period">2025–2026</div>
+      <div class="job-company">Dixa</div>
+    </div>
+    <div>
+      <p class="job-title">Product Manager, Partnerships</p>
+      <p class="job-desc">Led discovery for the Shopify integration through customer interviews and testing, identifying gaps and enhancements. Owned end-to-end delivery of the Ingrid integration and led weekly backlog sessions. Took ownership of the Assembled WFM integration mid-development, identified missing features and compatibility issues, and wrote technical documentation. Coordinated release with commercial teams.</p>
+      <div class="job-tags">
+        <span class="tag">Partner integrations</span>
+        <span class="tag">Discovery</span>
+        <span class="tag">Technical documentation</span>
+        <span class="tag">Release coordination</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="job">
+    <div class="job-meta">
+      <div class="job-period">2023–2025</div>
+      <div class="job-company">Pleaz</div>
+    </div>
+    <div>
+      <p class="job-title">Chief Customer Officer</p>
+      <p class="job-desc">Defined end-to-end strategy and scalable processes while leading a team of 5–7. Led validation of the MS Teams app through enterprise pilots with Nestlé and the NHS, including iterative user testing, feedback loops, and go-to-market enablement. Drove continuous improvement through feedback loops, hands-on client insights, and automated HubSpot workflows supporting product adoption.</p>
+      <div class="job-tags">
+        <span class="tag">Enterprise pilots</span>
+        <span class="tag">Team leadership</span>
+        <span class="tag">Product adoption</span>
+        <span class="tag">HubSpot</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="job">
+    <div class="job-meta">
+      <div class="job-period">2021–2023</div>
+      <div class="job-company">Pleaz</div>
+    </div>
+    <div>
+      <p class="job-title">Head of Customer Success</p>
+      <p class="job-desc">Owned MAU as a north star metric. Conducted user research on UX and product–market fit, translating insights into platform optimisations and a scalable onboarding email flow. Supported Account Executives with customer communication and campaign materials to drive continuous engagement.</p>
+      <div class="job-tags">
+        <span class="tag">UX research</span>
+        <span class="tag">Product–market fit</span>
+        <span class="tag">Onboarding</span>
+        <span class="tag">Activation</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="job">
+    <div class="job-meta">
+      <div class="job-period">2017–2021</div>
+      <div class="job-company">KnowledgeWorker</div>
+    </div>
+    <div>
+      <p class="job-title">Communication &amp; Web Consultant</p>
+      <p class="job-desc">Drove clients' digital transformation through business plans, pitch decks securing funding and exposure, and built and customised WordPress sites using HTML, CSS, and PHP. Co-wrote funding applications that secured investment for a construction-tech SaaS client.</p>
+      <div class="job-tags">
+        <span class="tag">WordPress</span>
+        <span class="tag">Digital transformation</span>
+        <span class="tag">Funding applications</span>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<hr class="section-divider">
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-label">Skills &amp; tools</p>
+
+  <div class="skills-grid">
+    <div class="skill-group">
+      <p class="skill-group-title">Product</p>
+      <div class="skill-list">
+        Hypothesis-driven discovery<br>
+        User &amp; stakeholder interviews<br>
+        Roadmap prioritisation<br>
+        Backlog facilitation<br>
+        Go-to-market enablement
+      </div>
+    </div>
+    <div class="skill-group">
+      <p class="skill-group-title">Data &amp; research</p>
+      <div class="skill-list">
+        Amplitude · Google Analytics<br>
+        User testing &amp; feedback loops<br>
+        Process automation<br>
+        HubSpot · Intercom
+      </div>
+    </div>
+    <div class="skill-group">
+      <p class="skill-group-title">Collaboration</p>
+      <div class="skill-list">
+        Productboard · Monday.com<br>
+        Notion · Miro · Figma<br>
+        Retool · LaunchDarkly<br>
+        GitHub · Slack
+      </div>
+    </div>
+    <div class="skill-group">
+      <p class="skill-group-title">Education</p>
+      <div class="skill-list">
+        MA International Business<br>
+        Communication, Aarhus Uni<br><br>
+        Agile Foundations · LinkedIn<br>
+        Scrum: The Basics, PMI
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- RECOMMENDATIONS -->
+<section id="recommendations">
+  <p class="section-label">Recommendations</p>
+
+  <div class="quotes-grid">
+    <div class="quote-card">
+      <p class="quote-text">"Carina has demonstrated a strong ability to quickly understand complex challenges and translate them into concrete, value-creating product improvements."</p>
+      <div class="quote-attr">
+        <span>Jakob Nederby Nielsen</span>
+        CTPO &amp; Co-founder, Dixa
+      </div>
+    </div>
+    <div class="quote-card">
+      <p class="quote-text">"I was genuinely impressed by how quickly she took ownership of testing, suggesting smart and actionable improvements that made the tool more valuable in her team's daily workflow."</p>
+      <div class="quote-attr">
+        <span>Natalia Markitantova</span>
+        Senior Developer, Pleaz
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label" style="justify-content: center;">Contact</p>
+  <h2>Let's talk</h2>
+  <p class="contact-sub">Open to PM and APM roles in Copenhagen and beyond.</p>
+  <div class="contact-links">
+    <a href="https://www.linkedin.com/in/carinasandholm" class="contact-link" target="_blank" rel="noopener">
+      <svg class="ico" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+    <a href="mailto:carina@example.com" class="contact-link">
+      <svg class="ico" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+      Email
+    </a>
+  </div>
+</section>
+
+<footer>
+  Carina Sandholm · Copenhagen
+</footer>
+
+</body>
+</html>
