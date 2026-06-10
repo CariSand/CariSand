@@ -4,21 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Carina Sandholm — Product Manager</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #FAFAF8;
-    --surface: #F2F0EA;
+    --bg: #F4F3F1;
+    --surface: #EAE8E4;
     --text: #1C1B18;
     --muted: #6B6960;
-    --accent: #2D5C4A;
-    --accent-light: #E1F0EA;
+    --accent: #3D5C50;
+    --accent-light: #E2EBE7;
+    --violet: #9B8EC4;
+    --violet-light: #EEEDF5;
+    --stone: #B8AFA8;
     --border: rgba(28,27,24,0.12);
-    --serif: 'DM Serif Display', Georgia, serif;
-    --sans: 'Inter', system-ui, sans-serif;
+    --serif: Georgia, 'Times New Roman', serif;
+    --sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
 
   html { scroll-behavior: smooth; }
@@ -32,7 +33,6 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* NAV */
   nav {
     position: sticky;
     top: 0;
@@ -85,10 +85,8 @@
     color: #fff !important;
   }
 
-  /* SECTIONS */
   section { padding: 5rem 2rem; max-width: 760px; margin: 0 auto; }
 
-  /* HERO */
   #about {
     padding-top: 6rem;
     padding-bottom: 4rem;
@@ -135,11 +133,11 @@
   .badge {
     font-size: 12px;
     font-weight: 500;
-    background: var(--surface);
-    border: 1px solid var(--border);
+    background: var(--violet-light);
+    border: 1px solid rgba(155,142,196,0.25);
     padding: 5px 12px;
     border-radius: 20px;
-    color: var(--muted);
+    color: #5B4E8A;
   }
 
   .hero-links {
@@ -174,7 +172,6 @@
 
   .btn-ghost:hover { border-color: var(--text); }
 
-  /* DIVIDER */
   .section-divider {
     border: none;
     border-top: 1px solid var(--border);
@@ -182,7 +179,6 @@
     margin: 0 auto;
   }
 
-  /* SECTION HEADINGS */
   .section-label {
     font-size: 11px;
     font-weight: 500;
@@ -210,7 +206,61 @@
     margin-bottom: 2rem;
   }
 
-  /* EXPERIENCE */
+  /* COMPANY GROUPS */
+  .company-group {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .company-group:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .company-header {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+  }
+
+  .company-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: opacity 0.15s;
+  }
+
+  .company-name::after {
+    content: '↗';
+    font-size: 12px;
+    opacity: 0.6;
+  }
+
+  .company-name:hover { opacity: 0.7; }
+
+  .company-roles { padding-left: 0; }
+
+  .role {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 0 2rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px dashed var(--border);
+  }
+
+  .role:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .role-period {
+    font-size: 12px;
+    color: var(--muted);
+    padding-top: 2px;
+  }
+
+  /* EXPERIENCE (old .job kept for education section) */
   .job {
     display: grid;
     grid-template-columns: 140px 1fr;
@@ -222,16 +272,13 @@
 
   .job:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 
-  .job-meta {
-    padding-top: 2px;
-  }
-
   .job-period {
     font-size: 12px;
     color: var(--muted);
     font-weight: 500;
     letter-spacing: 0.02em;
     line-height: 1.5;
+    padding-top: 2px;
   }
 
   .job-company {
@@ -270,10 +317,10 @@
     font-weight: 500;
   }
 
-  /* COMPETENCIES */
+  /* SKILLS */
   .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
     gap: 1px;
     background: var(--border);
     border: 1px solid var(--border);
@@ -299,12 +346,14 @@
     font-size: 14px;
     color: var(--muted);
     line-height: 1.8;
+    list-style: none;
+    padding: 0;
   }
 
   /* QUOTES */
   .quotes-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1.5rem;
   }
 
@@ -336,7 +385,6 @@
 
   /* CONTACT */
   #contact { text-align: center; }
-
   #contact h2 { margin-bottom: 0.75rem; }
 
   .contact-sub {
@@ -372,7 +420,6 @@
     background: var(--accent-light);
   }
 
-  /* FOOTER */
   footer {
     border-top: 1px solid var(--border);
     padding: 1.5rem 2rem;
@@ -383,18 +430,19 @@
     margin: 0 auto;
   }
 
-  /* SVG icons (inline) */
   .ico { width: 16px; height: 16px; vertical-align: -3px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 
-  /* RESPONSIVE */
   @media (max-width: 620px) {
     nav { padding: 0 1rem; }
     .nav-links { gap: 1rem; }
     .nav-links li:not(:last-child):not(:nth-last-child(2)) { display: none; }
     section { padding: 3rem 1.25rem; }
     .job { grid-template-columns: 1fr; gap: 0.25rem; }
-    .job-meta { display: flex; gap: 8px; align-items: baseline; margin-bottom: 6px; }
-    .quotes-grid { grid-template-columns: 1fr; }
+    .role { grid-template-columns: 1fr; gap: 0.25rem; }
+    .job-period { display: inline; margin-right: 8px; }
+    .job-company { display: inline; }
+    .quotes-grid, .cases-grid { grid-template-columns: 1fr; }
+    .case-card.full-width { grid-column: auto; }
     h1 { font-size: 2.4rem; }
   }
 </style>
@@ -405,7 +453,6 @@
   <a href="#about" class="nav-name">Carina Sandholm</a>
   <ul class="nav-links">
     <li><a href="#experience">Experience</a></li>
-    <li><a href="#skills">Skills</a></li>
     <li><a href="#recommendations">Recommendations</a></li>
     <li><a href="#contact" class="nav-cta">Get in touch</a></li>
   </ul>
@@ -414,9 +461,9 @@
 <!-- HERO -->
 <section id="about">
   <p class="eyebrow">Product Manager · Copenhagen</p>
-  <h1>Bridging technology,<br>business <em>and customers</em></h1>
+  <h1>Curious by nature,<br>user-obsessed <em>by experience</em></h1>
   <p class="hero-bio">
-    Curious product professional with a background in B2B SaaS, specialising in translating user insights and business needs into actionable solutions. From enterprise pilots with Nestlé and the NHS to shipping partner integrations at Dixa — I work at the intersection of discovery, delivery, and stakeholder trust.
+    Curious product professional with a strong focus on creating value for users. I enjoy becoming a domain expert and understanding new complex domains by experimenting, testing, and becoming a superuser. With a background leading B2B SaaS Customer Success initiatives, I bring strong user empathy and a holistic view on their product experience.
   </p>
   <div class="hero-badges">
     <span class="badge">Discovery &amp; prioritisation</span>
@@ -424,17 +471,16 @@
     <span class="badge">Stakeholder alignment</span>
     <span class="badge">User research</span>
     <span class="badge">Process automation</span>
+    <span class="badge">Project management</span>
     <span class="badge">Cross-functional delivery</span>
+    <span class="badge">AI prototyping</span>
   </div>
   <div class="hero-links">
     <a href="https://www.linkedin.com/in/carinasandholm" class="btn btn-primary" target="_blank" rel="noopener">
       <svg class="ico" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
       LinkedIn
     </a>
-    <a href="mailto:carina@example.com" class="btn btn-ghost">
-      <svg class="ico" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
-      Send an email
-    </a>
+
   </div>
 </section>
 
@@ -444,120 +490,224 @@
 <section id="experience">
   <p class="section-label">Experience</p>
 
-  <div class="job">
-    <div class="job-meta">
-      <div class="job-period">2025–2026</div>
-      <div class="job-company">Dixa</div>
+  <!-- Dixa -->
+  <div class="company-group">
+    <div class="company-header">
+      <a href="https://dixa.com/" class="company-name" target="_blank" rel="noopener">Dixa</a>
+      
     </div>
-    <div>
-      <p class="job-title">Product Manager, Partnerships</p>
-      <p class="job-desc">Led discovery for the Shopify integration through customer interviews and testing, identifying gaps and enhancements. Owned end-to-end delivery of the Ingrid integration and led weekly backlog sessions. Took ownership of the Assembled WFM integration mid-development, identified missing features and compatibility issues, and wrote technical documentation. Coordinated release with commercial teams.</p>
-      <div class="job-tags">
-        <span class="tag">Partner integrations</span>
-        <span class="tag">Discovery</span>
-        <span class="tag">Technical documentation</span>
-        <span class="tag">Release coordination</span>
+    <div class="company-roles">
+
+      <div class="role">
+        <div class="role-period">2025–2026</div>
+        <div>
+          <p class="job-title">Product Manager, Partnerships</p>
+          <p class="job-desc">Led hypothesis-driven discovery for the Shopify integration through customer interviews and data. Owned end-to-end delivery of the Ingrid integration and led weekly backlog sessions.</p>
+          <div class="job-tags">
+            <span class="tag">Discovery</span>
+            <span class="tag">User interviews</span>
+            <span class="tag">Partner integrations</span>
+            <span class="tag">Backlog facilitation</span>
+          </div>
+        </div>
       </div>
+
+      <div class="role">
+        <div class="role-period">2025</div>
+        <div>
+          <p class="job-title">Associate Product Manager, Partnerships</p>
+          <p class="job-desc">Owned the Assembled WFM integration, took over mid-development, identified missing features and compatibility issues, and wrote technical documentation. Coordinated release with commercial teams.</p>
+          <div class="job-tags">
+            <span class="tag">Technical documentation</span>
+            <span class="tag">Release coordination</span>
+            <span class="tag">Partner integrations</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
-  <div class="job">
-    <div class="job-meta">
-      <div class="job-period">2023–2025</div>
-      <div class="job-company">Pleaz</div>
+  <!-- Pleaz -->
+  <div class="company-group">
+    <div class="company-header">
+      <a href="https://get.pleaz.io/" class="company-name" target="_blank" rel="noopener">Pleaz</a>
+      
     </div>
-    <div>
-      <p class="job-title">Chief Customer Officer</p>
-      <p class="job-desc">Defined end-to-end strategy and scalable processes while leading a team of 5–7. Led validation of the MS Teams app through enterprise pilots with Nestlé and the NHS, including iterative user testing, feedback loops, and go-to-market enablement. Drove continuous improvement through feedback loops, hands-on client insights, and automated HubSpot workflows supporting product adoption.</p>
-      <div class="job-tags">
-        <span class="tag">Enterprise pilots</span>
-        <span class="tag">Team leadership</span>
-        <span class="tag">Product adoption</span>
-        <span class="tag">HubSpot</span>
+    <div class="company-roles">
+
+      <div class="role">
+        <div class="role-period">2023–2025</div>
+        <div>
+          <p class="job-title">Chief Customer Officer</p>
+          <p class="job-desc">Led validation of Pleaz's MS Teams app through enterprise pilots with Arla, Nestlé, and NHS — including user testing, continuous discovery, go-to-market enablement, and steering group coordination. Owned WAU/MAU and guided CSMs in daily operations.</p>
+          <div class="job-tags">
+            <span class="tag">Enterprise pilots</span>
+            <span class="tag">User testing</span>
+            <span class="tag">Go-to-market</span>
+            <span class="tag">Stakeholder alignment</span>
+          </div>
+        </div>
       </div>
+
+      <div class="role">
+        <div class="role-period">2021–2023</div>
+        <div>
+          <p class="job-title">Head of Customer Success</p>
+          <p class="job-desc">Defined end-to-end strategy and scalable processes while leading a team of 5–7. Owned MAU, turned client insights and feedback into automated HubSpot workflows and onboarding processes that delivered month-over-month growth.</p>
+          <div class="job-tags">
+            <span class="tag">Team leadership</span>
+            <span class="tag">Feedback loops</span>
+            <span class="tag">Onboarding</span>
+            <span class="tag">HubSpot automation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="role">
+        <div class="role-period">2021</div>
+        <div>
+          <p class="job-title">Customer Success Manager</p>
+          <p class="job-desc">Owned customer communication and campaign materials driving activation and continuous engagement.</p>
+          <div class="job-tags">
+            <span class="tag">Customer engagement</span>
+            <span class="tag">Campaign materials</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="role">
+        <div class="role-period">2020–2021</div>
+        <div>
+          <p class="job-title">UX Researcher and Communications</p>
+          <p class="job-desc">Conducted user research on UX and product–market fit, and translated insights into platform optimisations and an onboarding email flow.</p>
+          <div class="job-tags">
+            <span class="tag">UX research</span>
+            <span class="tag">Product–market fit</span>
+            <span class="tag">Onboarding</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
-  <div class="job">
-    <div class="job-meta">
-      <div class="job-period">2021–2023</div>
-      <div class="job-company">Pleaz</div>
+  <!-- KnowledgeWorker -->
+  <div class="company-group">
+    <div class="company-header">
+      <a href="https://knowledgeworker.dk/" class="company-name" target="_blank" rel="noopener">KnowledgeWorker</a>
+      
     </div>
-    <div>
-      <p class="job-title">Head of Customer Success</p>
-      <p class="job-desc">Owned MAU as a north star metric. Conducted user research on UX and product–market fit, translating insights into platform optimisations and a scalable onboarding email flow. Supported Account Executives with customer communication and campaign materials to drive continuous engagement.</p>
-      <div class="job-tags">
-        <span class="tag">UX research</span>
-        <span class="tag">Product–market fit</span>
-        <span class="tag">Onboarding</span>
-        <span class="tag">Activation</span>
-      </div>
-    </div>
-  </div>
+    <div class="company-roles">
 
-  <div class="job">
-    <div class="job-meta">
-      <div class="job-period">2017–2021</div>
-      <div class="job-company">KnowledgeWorker</div>
-    </div>
-    <div>
-      <p class="job-title">Communication &amp; Web Consultant</p>
-      <p class="job-desc">Drove clients' digital transformation through business plans, pitch decks securing funding and exposure, and built and customised WordPress sites using HTML, CSS, and PHP. Co-wrote funding applications that secured investment for a construction-tech SaaS client.</p>
-      <div class="job-tags">
-        <span class="tag">WordPress</span>
-        <span class="tag">Digital transformation</span>
-        <span class="tag">Funding applications</span>
+      <div class="role">
+        <div class="role-period">2019–2020</div>
+        <div>
+          <p class="job-title">Freelance Consultant &amp; Advisory Partner</p>
+          <p class="job-desc">Co-wrote funding applications that secured investments for one of the company's key clients.</p>
+          <div class="job-tags">
+            <span class="tag">Funding applications</span>
+            <span class="tag">Advisory</span>
+          </div>
+        </div>
       </div>
+
+      <div class="role">
+        <div class="role-period">2019</div>
+        <div>
+          <p class="job-title">Communication Manager</p>
+          <p class="job-desc">Led strategic communication and automated knowledge-sharing processes in Monday.com to strengthen cross-team collaboration.</p>
+          <div class="job-tags">
+            <span class="tag">Strategic communication</span>
+            <span class="tag">Process automation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="role">
+        <div class="role-period">2017–2019</div>
+        <div>
+          <p class="job-title">Communication &amp; Web Consultant</p>
+          <p class="job-desc">Drove clients' digital transformation with business plans and pitch decks securing funding and exposure; built and customised WordPress sites and a WooCommerce shop using HTML, CSS, and PHP.</p>
+          <div class="job-tags">
+            <span class="tag">WordPress</span>
+            <span class="tag">Digital transformation</span>
+            <span class="tag">Pitch decks</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
 </section>
 
-<hr class="section-divider">
-
-<!-- SKILLS -->
+<!-- TOOLS -->
 <section id="skills">
-  <p class="section-label">Skills &amp; tools</p>
+  <p class="section-label">Tools</p>
 
   <div class="skills-grid">
     <div class="skill-group">
-      <p class="skill-group-title">Product</p>
-      <div class="skill-list">
-        Hypothesis-driven discovery<br>
-        User &amp; stakeholder interviews<br>
-        Roadmap prioritisation<br>
-        Backlog facilitation<br>
-        Go-to-market enablement
-      </div>
+      <p class="skill-group-title">Product &amp; data</p>
+      <ul class="skill-list">
+        <li>Productboard (incl. Spark)</li>
+        <li>Amplitude</li>
+        <li>Google Analytics</li>
+        <li>Retool</li>
+        <li>LaunchDarkly</li>
+        <li>Miro · Figma</li>
+      </ul>
     </div>
     <div class="skill-group">
-      <p class="skill-group-title">Data &amp; research</p>
-      <div class="skill-list">
-        Amplitude · Google Analytics<br>
-        User testing &amp; feedback loops<br>
-        Process automation<br>
-        HubSpot · Intercom
-      </div>
-    </div>
-    <div class="skill-group">
-      <p class="skill-group-title">Collaboration</p>
-      <div class="skill-list">
-        Productboard · Monday.com<br>
-        Notion · Miro · Figma<br>
-        Retool · LaunchDarkly<br>
-        GitHub · Slack
-      </div>
-    </div>
-    <div class="skill-group">
-      <p class="skill-group-title">Education</p>
-      <div class="skill-list">
-        MA International Business<br>
-        Communication, Aarhus Uni<br><br>
-        Agile Foundations · LinkedIn<br>
-        Scrum: The Basics, PMI
-      </div>
+      <p class="skill-group-title">Automation &amp; ops</p>
+      <ul class="skill-list">
+        <li>HubSpot</li>
+        <li>Intercom · Dixa</li>
+        <li>Monday.com · Notion</li>
+        <li>GitHub</li>
+        <li>Claude Code (CLI)</li>
+      </ul>
     </div>
   </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- EDUCATION -->
+<section id="education">
+  <p class="section-label">Education &amp; certifications</p>
+
+  <div class="job">
+    <div>
+      <div class="job-period">2012–2015</div>
+      <div class="job-company">Aarhus University</div>
+    </div>
+    <div>
+      <p class="job-title">MA in International Business Communication</p>
+      <p class="job-desc">Corporate communication</p>
+    </div>
+  </div>
+
+  <div class="job">
+    <div>
+      <div class="job-period">2009–2012</div>
+      <div class="job-company">Aarhus University</div>
+    </div>
+    <div>
+      <p class="job-title">BA in International Communication and Multimedia</p>
+      <p class="job-desc">Exchange semester (Erasmus+) at Glasgow Caledonian University</p>
+    </div>
+  </div>
+
+  <div class="job">
+    <div>
+      <div class="job-period">Certifications</div>
+    </div>
+    <div>
+      <p class="job-desc">AI Fluency Framework &amp; Foundations · Anthropic<br>Agile Foundations · LinkedIn<br>Product Management First Steps · LinkedIn<br>Scrum: The Basics · Project Management Institute (PMI)</p>
+    </div>
+  </div>
+
 </section>
 
 <hr class="section-divider">
@@ -575,31 +725,38 @@
       </div>
     </div>
     <div class="quote-card">
-      <p class="quote-text">"I was genuinely impressed by how quickly she took ownership of testing, suggesting smart and actionable improvements that made the tool more valuable in her team's daily workflow."</p>
+      <p class="quote-text">"We collaborated closely on an internal CS tool I built, and I was genuinely impressed by how quickly she took ownership of testing it, suggesting smart and actionable improvements that made the tool more valuable in her team's daily workflow."</p>
       <div class="quote-attr">
         <span>Natalia Markitantova</span>
         Senior Developer, Pleaz
       </div>
     </div>
+    <div class="quote-card">
+      <p class="quote-text">"Carina is a quick learner, enabling her to take on new positions in a successful way. One of the most loyal and honest individuals I have worked with — I trust her completely. She has high professional standards."</p>
+      <div class="quote-attr">
+        <span>Micki Kold Nagel</span>
+        CEO &amp; Founder, Pleaz
+      </div>
+    </div>
+    <div class="quote-card">
+      <p class="quote-text">"Carina has a unique ability to assimilate new knowledge in solving complex challenges. Her broad understanding of business meant that our clients always got more value for their money than they expected."</p>
+      <div class="quote-attr">
+        <span>Frederik Petersen</span>
+        CEO, KnowledgeWorker
+      </div>
+    </div>
   </div>
 </section>
-
-<hr class="section-divider">
-
-<!-- CONTACT -->
 <section id="contact">
   <p class="section-label" style="justify-content: center;">Contact</p>
   <h2>Let's talk</h2>
-  <p class="contact-sub">Open to PM and APM roles in Copenhagen and beyond.</p>
+  <p class="contact-sub">Open to PM roles in Copenhagen and beyond.</p>
   <div class="contact-links">
     <a href="https://www.linkedin.com/in/carinasandholm" class="contact-link" target="_blank" rel="noopener">
       <svg class="ico" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
       LinkedIn
     </a>
-    <a href="mailto:carina@example.com" class="contact-link">
-      <svg class="ico" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
-      Email
-    </a>
+
   </div>
 </section>
 
