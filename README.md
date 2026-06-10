@@ -12,4 +12,4 @@ Built as a single self-contained `index.html` file as part of a TechWomen CPH ma
 
 ## Live site
 
-[carisand.github.io](https://carisand.github.io)
+[carisand.github.io/CariSand](https://carisand.github.io/CariSand/)
