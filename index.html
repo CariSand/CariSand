@@ -434,15 +434,15 @@
 
   @media (max-width: 620px) {
     nav { padding: 0 1rem; }
-    .nav-links { gap: 1rem; }
-    .nav-links li:not(:last-child):not(:nth-last-child(2)) { display: none; }
+    .nav-links li { display: none; }
+    .nav-links li:last-child { display: block; }
+    .nav-name { font-size: 14px; }
     section { padding: 3rem 1.25rem; }
     .job { grid-template-columns: 1fr; gap: 0.25rem; }
     .role { grid-template-columns: 1fr; gap: 0.25rem; }
     .job-period { display: inline; margin-right: 8px; }
     .job-company { display: inline; }
-    .quotes-grid, .cases-grid { grid-template-columns: 1fr; }
-    .case-card.full-width { grid-column: auto; }
+    .quotes-grid { grid-template-columns: 1fr; }
     h1 { font-size: 2.4rem; }
   }
 </style>
