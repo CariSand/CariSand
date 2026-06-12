@@ -85,11 +85,11 @@
     color: #fff !important;
   }
 
-  section { padding: 5rem 2rem; max-width: 760px; margin: 0 auto; }
+  section { padding: 3rem 2rem; max-width: 760px; margin: 0 auto; }
 
   #about {
     padding-top: 6rem;
-    padding-bottom: 4rem;
+    padding-bottom: 3rem;
   }
 
   .eyebrow {
@@ -171,13 +171,6 @@
   }
 
   .btn-ghost:hover { border-color: var(--text); }
-
-  .section-divider {
-    border: none;
-    border-top: 1px solid var(--border);
-    max-width: 760px;
-    margin: 0 auto;
-  }
 
   .section-label {
     font-size: 11px;
@@ -310,11 +303,12 @@
 
   .tag {
     font-size: 11px;
-    background: var(--surface);
-    color: var(--muted);
-    padding: 3px 9px;
-    border-radius: 4px;
     font-weight: 500;
+    background: var(--violet-light);
+    border: 1px solid rgba(155,142,196,0.25);
+    padding: 3px 10px;
+    border-radius: 20px;
+    color: #5B4E8A;
   }
 
   /* SKILLS */
@@ -353,12 +347,13 @@
   /* QUOTES */
   .quotes-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
   }
 
   .quote-card {
     background: var(--surface);
+    border: 1px solid var(--border);
     border-radius: 8px;
     padding: 1.5rem;
   }
@@ -379,7 +374,7 @@
   }
 
   .quote-attr span {
-    color: var(--text);
+    color: var(--accent);
     display: block;
   }
 
@@ -430,6 +425,72 @@
     margin: 0 auto;
   }
 
+  /* PROJECT CARD */
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--surface);
+    transition: border-color 0.15s;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .project-card:hover { border-color: rgba(61,92,80,0.5); }
+
+  .project-shots {
+    background: var(--accent);
+    padding: 2rem 3rem 0;
+    display: flex;
+    gap: 16px;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .project-shots img {
+    width: 28%;
+    max-width: 126px;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.3);
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .project-shots img:nth-child(2) {
+    width: 32%;
+    max-width: 144px;
+  }
+
+  .project-body {
+    padding: 1.5rem 1.75rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .project-title {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    letter-spacing: -0.01em;
+    color: var(--text);
+  }
+
+  .project-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  .project-link {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent);
+    margin-top: 0.5rem;
+  }
+
   .ico { width: 16px; height: 16px; vertical-align: -3px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 
   @media (max-width: 620px) {
@@ -444,6 +505,8 @@
     .job-company { display: inline; }
     .quotes-grid { grid-template-columns: 1fr; }
     h1 { font-size: 2.4rem; }
+    .project-shots { padding: 1.5rem 1.5rem 0; gap: 10px; }
+    .project-body { padding: 1.25rem 1.25rem 1.5rem; }
   }
 </style>
 </head>
@@ -452,6 +515,7 @@
 <nav>
   <a href="#about" class="nav-name">Carina Sandholm</a>
   <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#recommendations">Recommendations</a></li>
     <li><a href="#contact" class="nav-cta">Get in touch</a></li>
@@ -484,7 +548,28 @@
   </div>
 </section>
 
-<hr class="section-divider">
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">Projects</p>
+  <a href="garnwise.html" class="project-card">
+    <div class="project-shots">
+      <img src="garnwise/IMG_1768.PNG" alt="Yarn stash grid">
+      <img src="garnwise/IMG_1775.PNG" alt="Stripe visualizer">
+      <img src="garnwise/IMG_1777.PNG" alt="Pattern check result">
+    </div>
+    <div class="project-body">
+      <p class="project-title">Garnwise</p>
+      <p class="project-desc">A mobile-first yarn stash tracker and pattern planner — built to help knitters use what they already have. Covers the full loop from stash to finished project, with a stripe visualiser and PNG export along the way.</p>
+      <div class="job-tags">
+        <span class="tag">React</span>
+        <span class="tag">TypeScript</span>
+        <span class="tag">Supabase</span>
+        <span class="tag">Tailwind CSS</span>
+      </div>
+      <p class="project-link">Read about the project →</p>
+    </div>
+  </a>
+</section>
 
 <!-- EXPERIENCE -->
 <section id="experience">
@@ -671,8 +756,6 @@
   </div>
 </section>
 
-<hr class="section-divider">
-
 <!-- EDUCATION -->
 <section id="education">
   <p class="section-label">Education &amp; certifications</p>
@@ -709,8 +792,6 @@
   </div>
 
 </section>
-
-<hr class="section-divider">
 
 <!-- RECOMMENDATIONS -->
 <section id="recommendations">
