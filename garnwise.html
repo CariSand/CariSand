@@ -721,6 +721,27 @@
       <li class="fade">
         <span class="dot"></span>
         <div>
+          <p class="dt">AI vision replaced with mathematical estimation</p>
+          <p class="dd">The original spec called for Gemini Flash photo analysis to extract stitch gauge from swatch photos. After scoping the implementation, the same goal — needle size recommendations based on historical gauge data — is achievable through structured inputs and calculation. No photo upload pipeline, no guardrails problem, same outcome.</p>
+        </div>
+      </li>
+      <li class="fade">
+        <span class="dot"></span>
+        <div>
+          <p class="dt">Progressive web app support evaluated and rejected</p>
+          <p class="dd">Auto-update via service worker was prototyped and then removed before shipping. Once a service worker is installed in a browser, removing it later requires a coordinated unregister deploy — a permanent maintenance commitment. At current scale, CDN cache handles updates adequately. The cost of lock-in outweighed the benefit.</p>
+        </div>
+      </li>
+      <li class="fade">
+        <span class="dot"></span>
+        <div>
+          <p class="dt">Profile promoted from icon to primary tab</p>
+          <p class="dd">The original brief scoped Profile as a utility hidden behind an icon in the Projects header. In practice it holds password management, manual cloud sync, and account deletion — features users need to find reliably. Elevating it to a bottom-nav tab follows established mobile patterns and removes friction from infrequent-but-important actions.</p>
+        </div>
+      </li>
+            <li class="fade">
+        <span class="dot"></span>
+        <div>
           <p class="dt">Account deletion that actually deletes data</p>
           <p class="dd">Removes the Supabase auth record and all associated rows. Not soft-deleted, not archived — gone.</p>
         </div>
