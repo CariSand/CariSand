@@ -1,14 +1,6 @@
 ## Hi there 👋
 
-This is my professional portfolio site (projects will be added)
-
-Built as a single self-contained `index.html` file as part of a TechWomen CPH masterclass — no frameworks, no dependencies, no external requests.
-
-## Stack
-
-- Plain HTML/CSS
-- System fonts (no Google Fonts by choice)
-- No analytics or tracking
+I'm building to learn as part of my career transition bringing my customer facing experience and user advocacy into product management.
 
 ## Live site
 
