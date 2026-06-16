@@ -452,7 +452,12 @@
 
 <nav>
   <a href="index.html" class="nav-name">Carina Sandholm</a>
-  <a href="index.html" class="nav-back">← Back</a>
+  <div style="display:flex;align-items:center;gap:1.5rem;">
+    <a href="#features" style="font-size:14px;color:var(--muted);text-decoration:none;">Features</a>
+    <a href="#decisions" style="font-size:14px;color:var(--muted);text-decoration:none;">Decisions</a>
+    <a href="#next" style="font-size:14px;color:var(--muted);text-decoration:none;">What's next</a>
+    <a href="index.html" class="nav-back">← Back</a>
+  </div>
 </nav>
 
 <!-- ── Hero ── -->
@@ -490,6 +495,7 @@
 </section>
 
 <!-- ── Add to stash ── -->
+<div id="features"></div>
 <section>
   <div class="wrap">
     <div class="fade">
@@ -654,6 +660,7 @@
 </section>
 
 <!-- ── Decisions ── -->
+<div id="decisions"></div>
 <section>
   <div class="wrap">
     <div class="fade">
@@ -753,7 +760,7 @@
 <section style="background: var(--violet-light);">
   <div class="wrap">
     <div class="fade">
-      <p class="section-label">What's next</p>
+      <p class="section-label" id="next">What's next</p>
       <h2>Where it's going</h2>
       <p class="body-text">The current version solves the immediate problem: knowing what you have and planning from it. The layer I'm most excited about building next is personalization: once the tool has gauge data from completed projects, it can start making genuinely useful recommendations.</p>
       <p class="body-text">Which needle size is likely to give you the right tension based on how you've knit before. How much yarn you'll actually need, adjusted for your personal tension, not just the pattern estimate. Color combinations based on color theory and your own color profile.</p>
