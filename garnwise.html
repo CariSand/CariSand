@@ -439,8 +439,28 @@
     footer a { color: var(--accent); text-decoration: none; font-weight: 500; }
     footer a:hover { text-decoration: underline; }
 
+
+    /* ── Nav links ── */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
     @media (max-width: 620px) {
       nav { padding: 0 1rem; }
+      .nav-links li { display: none; }
+      .nav-links li:last-child { display: block; }
       .wrap { padding: 0 1.25rem; }
       section { padding: 3rem 0; }
       #hero { padding-top: 3.5rem; }
@@ -452,12 +472,12 @@
 
 <nav>
   <a href="index.html" class="nav-name">Carina Sandholm</a>
-  <div style="display:flex;align-items:center;gap:1.5rem;">
-    <a href="#features" style="font-size:14px;color:var(--muted);text-decoration:none;">Features</a>
-    <a href="#decisions" style="font-size:14px;color:var(--muted);text-decoration:none;">Decisions</a>
-    <a href="#next" style="font-size:14px;color:var(--muted);text-decoration:none;">What's next</a>
-    <a href="index.html" class="nav-back">← Back</a>
-  </div>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#decisions">Decisions</a></li>
+    <li><a href="#next">What's next</a></li>
+    <li><a href="index.html" class="nav-back">← Back</a></li>
+  </ul>
 </nav>
 
 <!-- ── Hero ── -->
