@@ -463,6 +463,27 @@
     max-width: 144px;
   }
 
+  .project-shots--wide {
+    background: var(--accent);
+    padding: 2rem 3rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+    height: 345px;
+  }
+
+  .project-shots--wide img {
+    width: 100%;
+    max-width: none;
+    height: auto;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.3);
+    display: block;
+  }
+
+  .project-card + .project-card { margin-top: 1.5rem; }
+
   .project-body {
     padding: 1.5rem 1.75rem 1.75rem;
     display: flex;
@@ -571,10 +592,8 @@
   </a>
 
   <a href="plan-for-your-pr.html" class="project-card">
-    <div class="project-shots">
-      <img src="plan-for-your-pr/landing-initial.png" alt="Landing page">
-      <img src="plan-for-your-pr/landing-with-time.png" alt="Pace calculator">
-      <img src="plan-for-your-pr/plan-header.png" alt="Generated training plan">
+    <div class="project-shots project-shots--wide">
+      <img src="plan-for-your-pr/ss-landing.png" alt="Run Your Best Race — landing page">
     </div>
     <div class="project-body">
       <p class="project-title">Plan for Your PR</p>
