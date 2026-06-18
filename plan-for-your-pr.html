@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plan for Your PR — Case Study · Carina Sandholm</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #F4F3F1;
+      --surface: #EAE8E4;
+      --text: #1C1B18;
+      --muted: #6B6960;
+      --accent: #3D5C50;
+      --accent-light: #E2EBE7;
+      --violet-light: #EEEDF5;
+      --border: rgba(28,27,24,0.10);
+      --serif: Georgia, 'Times New Roman', serif;
+      --sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .nav-name {
+      font-family: var(--serif);
+      font-size: 17px;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-back {
+      font-size: 14px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .nav-back:hover { color: var(--text); }
+
+    /* ── Layout ── */
+    .wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    section { padding: 3rem 0; }
+    section.tight { padding: 2rem 0; }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.6rem, 6vw, 4rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-family: var(--serif);
+      font-size: 1.75rem;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.9rem;
+    }
+
+    .body-text {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 600px;
+      margin-bottom: 0.75rem;
+    }
+
+    /* ── Hero ── */
+    #hero { padding-top: 6rem; padding-bottom: 4rem; }
+
+    .eyebrow {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-tagline {
+      font-size: 17px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 520px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 2rem;
+    }
+
+    .badge {
+      font-size: 12px;
+      font-weight: 500;
+      background: var(--violet-light);
+      border: 1px solid rgba(155,142,196,0.25);
+      padding: 5px 12px;
+      border-radius: 20px;
+      color: #5B4E8A;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 10px 22px;
+      border-radius: 6px;
+      text-decoration: none;
+      background: var(--accent);
+      color: #fff;
+      border: 1px solid var(--accent);
+      transition: background 0.15s;
+    }
+
+    .btn-primary:hover { background: #1e3f33; border-color: #1e3f33; }
+
+    /* ── Hero preview (single landscape) ── */
+    .hero-shot-single {
+      background: var(--accent-light);
+      border-radius: 16px;
+      padding: 1.5rem 1.5rem 0;
+      margin-top: 2.5rem;
+      overflow: hidden;
+    }
+
+    .hero-shot-single img {
+      width: 100%;
+      border-radius: 10px 10px 0 0;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.18);
+      display: block;
+    }
+
+    /* ── App screenshot frame (landscape slideshow) ── */
+    .app-frame {
+      background: #fff;
+      border-radius: 18px;
+      padding: 10px 10px 14px;
+      box-shadow: 0 2px 18px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+      margin-top: 2rem;
+    }
+
+    .frame-inner {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .frame-img {
+      width: 100%;
+      display: block;
+      border-radius: 10px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      z-index: 1;
+    }
+
+    .frame-img:first-child {
+      position: relative;
+    }
+
+    .frame-img.active {
+      opacity: 1;
+      z-index: 2;
+      transition: none;
+    }
+
+    .frame-img.leaving {
+      opacity: 0;
+      z-index: 3;
+      transition: opacity 0.65s ease;
+    }
+
+    .frame-dots {
+      display: flex;
+      gap: 5px;
+      justify-content: center;
+    }
+
+    .frame-dots span {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #DDD9D3;
+      transition: background 0.3s;
+      cursor: pointer;
+    }
+
+    .frame-dots span.active { background: var(--accent); }
+
+    .frame-caption {
+      font-size: 12px;
+      color: #b0aa9f;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    /* ── Slide layout ── */
+    .slide-layout {
+      display: flex;
+      gap: 2.5rem;
+      align-items: flex-start;
+      margin-top: 2rem;
+    }
+
+    .step-bullets {
+      list-style: none;
+      padding-top: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .step-bullets li {
+      font-size: 14px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: color 0.25s;
+      line-height: 1.4;
+    }
+
+    .step-bullets li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #DDD9D3;
+      flex-shrink: 0;
+      transition: background 0.25s;
+    }
+
+    .step-bullets li.active {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .step-bullets li.active::before {
+      background: var(--accent);
+    }
+
+    .step-bullets li:hover:not(.active) { color: var(--text); }
+
+    /* ── Decisions ── */
+    .decisions {
+      list-style: none;
+      margin-top: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .decisions li {
+      display: grid;
+      grid-template-columns: 8px 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-top: 9px;
+    }
+
+    .dt {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+
+    .dd {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── Scroll fade-in ── */
+    .fade {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .fade.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .fade-d1 { transition-delay: 0.1s; }
+    .fade-d2 { transition-delay: 0.2s; }
+    .fade-d3 { transition-delay: 0.3s; }
+
+    .decisions li.fade:nth-child(2) { transition-delay: 0.08s; }
+    .decisions li.fade:nth-child(3) { transition-delay: 0.16s; }
+    .decisions li.fade:nth-child(4) { transition-delay: 0.24s; }
+    .decisions li.fade:nth-child(5) { transition-delay: 0.32s; }
+    .decisions li.fade:nth-child(6) { transition-delay: 0.40s; }
+    .decisions li.fade:nth-child(7) { transition-delay: 0.48s; }
+    .decisions li.fade:nth-child(8) { transition-delay: 0.56s; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    footer a { color: var(--accent); text-decoration: none; font-weight: 500; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 620px) {
+      nav { padding: 0 1rem; }
+      .wrap { padding: 0 1.25rem; }
+      section { padding: 3rem 0; }
+      #hero { padding-top: 3.5rem; }
+      .slide-layout { flex-direction: column; }
+      .app-frame { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-name">Carina Sandholm</a>
+  <a href="index.html" class="nav-back">← Back</a>
+</nav>
+
+<!-- ── Hero ── -->
+<section id="hero">
+  <div class="wrap">
+    <p class="eyebrow fade">Side project · 2026</p>
+    <h1 class="fade fade-d1">Plan for Your PR</h1>
+    <p class="hero-tagline fade fade-d1">A personalized running training plan generator — from goal time to week-by-week schedule in under a minute, built on Jack Daniels' VDOT methodology.</p>
+    <div class="hero-badges fade fade-d2">
+      <span class="badge">React</span>
+      <span class="badge">TypeScript</span>
+      <span class="badge">Tailwind CSS</span>
+      <span class="badge">shadcn/ui</span>
+      <span class="badge">Framer Motion</span>
+      <span class="badge">Lovable</span>
+    </div>
+    <div class="hero-shot-single fade fade-d2">
+      <img src="plan-for-your-pr/ss-landing.png" alt="Landing — Run Your Best Race">
+    </div>
+    <a href="https://github.com/CariSand/plan-for-your-pr" class="btn-primary fade fade-d3" target="_blank" rel="noopener" style="margin-top: 2rem; display: inline-block;">↗ View on GitHub</a>
+  </div>
+</section>
+
+<!-- ── Overview ── -->
+<section class="tight">
+  <div class="wrap">
+    <div class="fade">
+      <p class="section-label">Overview</p>
+      <h2>A first experiment with vibecoding</h2>
+      <p class="body-text">Scaffolded in Lovable during their #shebuilds International Women's Day campaign — a first experiment with AI-assisted development. The core flow was working within hours. A few passes in Claude Code afterwards tightened the UI and fixed edge cases.</p>
+      <p class="body-text">I chose this project because I could be the user myself — as a runner, I wanted a plan I'd actually follow. Every iteration pulled in the same direction: strip the surface, strengthen the substance.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── The app ── -->
+<section>
+  <div class="wrap">
+    <div class="fade">
+      <p class="section-label">The app</p>
+      <h2>The full flow in five steps</h2>
+    </div>
+    <div class="app-frame fade fade-d1">
+      <div class="frame-inner">
+        <img class="frame-img active" src="plan-for-your-pr/ss-landing.png" alt="Pick your race distance" data-caption="1 / Pick your distance">
+        <img class="frame-img" src="plan-for-your-pr/ss-pace.png" alt="Enter your goal time" data-caption="2 / Enter your goal time — pace shown live">
+        <img class="frame-img" src="plan-for-your-pr/ss-planner-filled.png" alt="Set race date and preferences" data-caption="3 / Set your race date, weekly km, and days">
+        <img class="frame-img" src="plan-for-your-pr/ss-plan-header.png" alt="Generated week-by-week plan" data-caption="4 / Your week-by-week training plan">
+        <img class="frame-img" src="plan-for-your-pr/ss-calendar-export.png" alt="Export to calendar" data-caption="5 / Export to Google or Apple Calendar">
+      </div>
+      <div class="frame-dots">
+        <span class="active"></span><span></span><span></span><span></span><span></span>
+      </div>
+      <p class="frame-caption">1 / Pick your distance</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Decisions ── -->
+<section>
+  <div class="wrap">
+    <div class="fade">
+      <p class="section-label">Design decisions</p>
+      <h2>Decisions</h2>
+    </div>
+    <ul class="decisions" style="margin-top: 1.75rem;">
+      <li class="fade">
+        <span class="dot"></span>
+        <div>
+          <p class="dt">VDOT over simpler pace tables</p>
+          <p class="dd">Jack Daniels' VDOT system derives five training pace zones — easy, marathon, threshold, interval, repetition — from a single performance input. It's more accurate than generic percentage-of-race-pace tables and is widely used by running coaches. The result is specific, actionable pace targets rather than vague effort levels.</p>
+        </div>
+      </li>
+      <li class="fade">
+        <span class="dot"></span>
+        <div>
+          <p class="dt">shadcn/ui for accessible components out of the box</p>
+          <p class="dd">A multi-step form with a date picker, number inputs, and toggle buttons is a lot of ground-up work. shadcn/ui components are keyboard-accessible and mobile-friendly by default — the right foundation for a tool people will use on their phone while planning a training week.</p>
+        </div>
+      </li>
+      <li class="fade">
+        <span class="dot"></span>
+        <div>
+          <p class="dt">Framer Motion for step transitions</p>
+          <p class="dd">The multi-step flow needed to feel smooth, not like a page reload. Framer Motion's AnimatePresence handles enter and exit transitions between steps with a single wrapper — very little code for a noticeably better experience.</p>
+        </div>
+      </li>
+      <li class="fade">
+        <span class="dot"></span>
+        <div>
+          <p class="dt">ICS export over a native calendar integration</p>
+          <p class="dd">No OAuth flow, no API keys, no platform lock-in. An ICS file opens in Google Calendar, Apple Calendar, and Outlook alike. Every workout lands in the right week with paces in the event description.</p>
+        </div>
+      </li>
+      <li class="fade">
+        <span class="dot"></span>
+        <div>
+          <p class="dt">Single-page, no backend</p>
+          <p class="dd">All calculations happen in the browser. No server, no database, no login. The plan generates instantly, and there's nothing to store or secure. The right scope for a build-to-learn project — ship the interesting part, skip the infrastructure.</p>
+        </div>
+      </li>
+      <li class="fade">
+        <span class="dot"></span>
+        <div>
+          <p class="dt">Hero as instant value</p>
+          <p class="dd">After the planner flow got richer, the pace calculator was pulled back into the hero — so users see their target pace per km before committing to the full setup. Give value first, ask for input second.</p>
+        </div>
+      </li>
+      <li class="fade">
+        <span class="dot"></span>
+        <div>
+          <p class="dt">Rigorous underneath, readable on top</p>
+          <p class="dd">VDOT jargon never surfaces to the user. The science does the work invisibly; the interface just shows paces and phases.</p>
+        </div>
+      </li>
+      <li class="fade">
+        <span class="dot"></span>
+        <div>
+          <p class="dt">No duplicate inputs</p>
+          <p class="dd">Once the hero captures distance and goal time, those values carry directly into the planner — no re-entry. A small detail, but it reflects thinking about the full flow rather than individual screens in isolation.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <a href="index.html">← Back to portfolio</a> &nbsp;·&nbsp; Carina Sandholm · Copenhagen
+</footer>
+
+<script>
+  // Scroll fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
+
+  document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+
+  // Slideshows
+  document.querySelectorAll('.app-frame').forEach(frame => {
+    const imgs = [...frame.querySelectorAll('.frame-img')];
+    const dots = [...frame.querySelectorAll('.frame-dots span')];
+    const caption = frame.querySelector('.frame-caption');
+    const layout = frame.closest('.slide-layout');
+    const bullets = layout ? [...layout.querySelectorAll('.step-bullets li')] : [];
+    if (imgs.length <= 1) return;
+    let current = 0;
+
+    const advance = (next) => {
+      const outgoing = imgs[current];
+      dots[current].classList.remove('active');
+      if (bullets[current]) bullets[current].classList.remove('active');
+      current = next ?? (current + 1) % imgs.length;
+      imgs[current].classList.add('active');
+      dots[current].classList.add('active');
+      if (bullets[current]) bullets[current].classList.add('active');
+      if (caption) caption.textContent = imgs[current].dataset.caption || '';
+      outgoing.classList.remove('active');
+      outgoing.classList.add('leaving');
+      setTimeout(() => outgoing.classList.remove('leaving'), 700);
+    };
+
+    dots.forEach((dot, i) => dot.addEventListener('click', () => advance(i)));
+    bullets.forEach((bullet, i) => bullet.addEventListener('click', () => advance(i)));
+
+    setInterval(() => advance(), 2400);
+  });
+</script>
+
+</body>
+</html>
